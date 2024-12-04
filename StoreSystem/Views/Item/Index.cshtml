@@ -1,0 +1,37 @@
+﻿@model List<Item>
+<h1>Item List</h1>
+<div style="text-align: right; margin-bottom: 10px;">
+    <a class="btn btn-success">Add Item</a>
+</div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Item Id
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Price
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
