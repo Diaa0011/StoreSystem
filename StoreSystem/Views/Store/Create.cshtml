@@ -27,9 +27,13 @@
         <input type="text" class="form-control" id="Longitude" name="Longitude" value="@Model?.Longitude" readonly />
     </div>
 
-    <!-- Create Store Button (Centered and Larger) -->
-    <div class="text-center" style="margin-top: 10px;">
+    <!-- Create Store and Cancel Buttons (Side by Side) -->
+    <div class="text-center" style="margin-top: 10px; display: flex; justify-content: center; gap: 20px;">
+        <!-- Create Store Button -->
         <button type="submit" class="btn btn-primary" style="font-size: 1.25em; width: 25%;">Create Store</button>
+
+        <!-- Cancel Button (Redirects to Store List) -->
+        <a href="@Url.Action("Index", "Store")" class="btn btn-secondary" style="font-size: 1.25em; width: 25%;">Cancel</a>
     </div>
 </form>
 
@@ -40,7 +44,7 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
 <script>
-    var map = L.map('map').setView([31.2156, 29.9553], 12); // Alexandria coordinates
+    var map = L.map('map').setView([31.2156, 29.9553], 13); // Alexandria coordinates
 
     // Add OpenStreetMap tiles layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
