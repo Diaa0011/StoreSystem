@@ -1,9 +1,14 @@
-﻿using StoreSystem.Models;
+﻿using StoreSystem.Dtos.Item;
+using StoreSystem.Models;
 
 namespace StoreSystem.Services.IService
 {
     public interface IItemService
     {
-        public IEnumerable<Item> GetItems();
+        public IEnumerable<ReadItemDto> GetAllItems();
+        public ReadItemDto GetItem(int id);
+        public void Add(CreateItemDto CreateItem);
+        public void Update(int id,UpdateItemDto updateItem);
+        public void Delete(int id);
     }
 }

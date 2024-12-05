@@ -11,8 +11,8 @@ using StoreSystem.Data;
 namespace StoreSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241204192715_decmialprice")]
-    partial class decmialprice
+    [Migration("20241205181716_rebuild")]
+    partial class rebuild
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,6 +80,10 @@ namespace StoreSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("stores");
@@ -89,13 +93,15 @@ namespace StoreSystem.Migrations
                         {
                             Id = 1,
                             Address = "Ahmed Orabi Square",
-                            Name = "Manshia Store"
+                            Name = "Manshia Store",
+                            PhoneNumber = "0123456789"
                         },
                         new
                         {
                             Id = 2,
                             Address = "Front of sidi Gaber Elsheikh tram station",
-                            Name = "Sidi Gaber Store"
+                            Name = "Sidi Gaber Store",
+                            PhoneNumber = "0123456789"
                         });
                 });
 

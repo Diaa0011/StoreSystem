@@ -21,8 +21,8 @@ namespace StoreSystem.Data
                         .Property(i => i.Price)
                         .HasColumnType("decimal(18, 2)");
             modelBuilder.Entity<Store>().HasData(
-                new Store { Id = 1, Name = "Manshia Store", Address = "Ahmed Orabi Square" },
-                new Store { Id = 2, Name = "Sidi Gaber Store", Address = "Front of sidi Gaber Elsheikh tram station" }
+                new Store { Id = 1, Name = "Manshia Store", Address = "Ahmed Orabi Square",PhoneNumber="0123456789" },
+                new Store { Id = 2, Name = "Sidi Gaber Store", Address = "Front of sidi Gaber Elsheikh tram station", PhoneNumber = "0123456789" }
                 );
             modelBuilder.Entity<Item>().HasData(
                 new Item { Id = 1, Name = "Samasung S24", Description = "Lorem Ipsum", Price = 2000 },

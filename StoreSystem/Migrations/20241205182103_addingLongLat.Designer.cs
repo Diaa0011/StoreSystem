@@ -11,8 +11,8 @@ using StoreSystem.Data;
 namespace StoreSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241204192557_seedingItems")]
-    partial class seedingItems
+    [Migration("20241205182103_addingLongLat")]
+    partial class addingLongLat
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,7 +41,7 @@ namespace StoreSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18, 4)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("Id");
 
@@ -76,7 +76,17 @@ namespace StoreSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("float");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -89,13 +99,19 @@ namespace StoreSystem.Migrations
                         {
                             Id = 1,
                             Address = "Ahmed Orabi Square",
-                            Name = "Manshia Store"
+                            Latitude = 0.0,
+                            Longitude = 0.0,
+                            Name = "Manshia Store",
+                            PhoneNumber = "0123456789"
                         },
                         new
                         {
                             Id = 2,
                             Address = "Front of sidi Gaber Elsheikh tram station",
-                            Name = "Sidi Gaber Store"
+                            Latitude = 0.0,
+                            Longitude = 0.0,
+                            Name = "Sidi Gaber Store",
+                            PhoneNumber = "0123456789"
                         });
                 });
 

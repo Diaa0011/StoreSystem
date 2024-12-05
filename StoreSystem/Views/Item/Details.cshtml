@@ -1,0 +1,36 @@
+﻿@model StoreSystem.Dtos.Item.ReadItemDto
+
+<div class="container mt-5">
+    <h1 class="mb-4" style="text-align: left;">Item Details</h1>
+
+    <div class="text-center mb-4">
+        <img src="~/images/defaultImage.png" alt="Item Image" class="img-fluid" style="width: 300px; height: 300px;">
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.Name</h5>
+
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th class="bg-primary text-white" style="width: 30%;">Description</th>
+                                <td>@Model.Description</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-primary text-white" style="width: 30%;">Price</th>
+                                <td>@Model.Price.ToString("C")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="text-center">
+                        <a asp-action="Index" class="btn btn-primary">Back to Item List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

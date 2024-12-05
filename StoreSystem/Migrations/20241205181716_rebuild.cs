@@ -7,7 +7,7 @@
 namespace StoreSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class intitaldb : Migration
+    public partial class rebuild : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +20,7 @@ namespace StoreSystem.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,4)", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,7 +34,8 @@ namespace StoreSystem.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,12 +70,21 @@ namespace StoreSystem.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "stores",
-                columns: new[] { "Id", "Address", "Name" },
+                table: "items",
+                columns: new[] { "Id", "Description", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 1, "Ahmed Orabi Square", "Manshia Store" },
-                    { 2, "Front of sidi Gaber Elsheikh tram station", "Sidi Gaber Store" }
+                    { 1, "Lorem Ipsum", "Samasung S24", 2000m },
+                    { 2, "Lorem Ipsum", "Iphone 14", 3000m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "stores",
+                columns: new[] { "Id", "Address", "Name", "PhoneNumber" },
+                values: new object[,]
+                {
+                    { 1, "Ahmed Orabi Square", "Manshia Store", "0123456789" },
+                    { 2, "Front of sidi Gaber Elsheikh tram station", "Sidi Gaber Store", "0123456789" }
                 });
 
             migrationBuilder.CreateIndex(

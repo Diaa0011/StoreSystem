@@ -1,7 +1,8 @@
-﻿@model List<Item>
+﻿@using StoreSystem.Dtos.Item
+@model List<ReadItemDto>
 <h1>Item List</h1>
 <div style="text-align: right; margin-bottom: 10px;">
-    <a class="btn btn-success">Add Item</a>
+    <a asp-controller="Item" asp-action="Create" class="btn btn-success">Add Item</a>
 </div>
 <table class="table table-bordered table-striped">
     <thead>
@@ -29,6 +30,13 @@
                 </td>
                 <td>
                     @item.Price
+                </td>
+                <td class="text-center align-middle" style="white-space: nowrap;">
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-warning btn-sm mx-1" style="width: 50%;" asp-action="Details" asp-controller="Item" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-primary btn-sm mx-1" style="width: 50%;" asp-action="Update" asp-controller="Item" asp-route-id="@item.Id">Update</a>
+                        <a class="btn btn-danger btn-sm mx-1" style="width: 50%;" asp-action="Delete" asp-controller="Item" asp-route-id="@item.Id">Delete</a>
+                    </div>
                 </td>
             </tr>
         }

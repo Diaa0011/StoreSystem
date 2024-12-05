@@ -19,6 +19,11 @@ namespace StoreSystem.Services.Repository
 
             return stores;
         }
+        public void Add(Store store)
+        {
+            _db.stores.Add(store);
+            _db.SaveChanges();
+        }
 
 
     }
