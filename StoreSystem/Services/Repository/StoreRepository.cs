@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StoreSystem.Data;
+using StoreSystem.Dtos.Store;
 using StoreSystem.Models;
 using StoreSystem.Services.IRepository;
 
@@ -19,9 +20,25 @@ namespace StoreSystem.Services.Repository
 
             return stores;
         }
+        public Store GetStore(int id)
+        {
+            var store = _db.stores.FirstOrDefault(q => q.Id == id);
+
+            return store;
+        }
         public void Add(Store store)
         {
             _db.stores.Add(store);
+            _db.SaveChanges();
+        }
+        public void Update(Store store)
+        {
+            _db.stores.Update(store);
+            _db.SaveChanges();
+        }
+        public void Delete(Store store) 
+        { 
+            _db.stores.Remove(store);
             _db.SaveChanges();
         }
 

@@ -1,6 +1,6 @@
 ﻿@model StoreSystem.Dtos.Store.StoreDetailsDto
 
-<h1>@Model.Name</h1>
+<h1>Delete Store - @Model.Name</h1>
 
 <div class="store-details">
     <div class="row">
@@ -20,27 +20,6 @@
             <div id="map" style="height: 300px; width: 100%;"></div>
         </div>
     </div>
-
-    <div class="store-items">
-        <h4>Store Items</h4>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Item Title</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Items)
-                {
-                    <tr>
-                        <td>@item.Item.Name</td>
-                        <td>@item.Quantity</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
 </div>
 
 <!-- Leaflet CSS -->
@@ -50,12 +29,8 @@
 
 @section Scripts {
     <script>
-        // Debugging the coordinates
-        console.log("Latitude: " + @Model.Latitude);
-        console.log("Longitude: " + @Model.Longitude);
-
-        // Initialize the map
-        var map = L.map('map').setView([@Model.Latitude, @Model.Longitude], 15);
+        // Initialize the map at the store's location (Latitude and Longitude from model)
+        var map = L.map('map').setView([@Model.Latitude, @Model.Longitude], 15); // Adjust zoom level as needed
 
         // Add a tile layer to the map (Leaflet)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -69,7 +44,14 @@
     </script>
 }
 
-<!-- Return to Store List Button (at the bottom) -->
+<!-- Confirmation Button for Deletion -->
+<div class="text-center mt-4">
+    <form method="post" action="@Url.Action("Delete", "Store", new { id = Model.Id })">
+        <button type="submit" class="btn btn-danger" style="font-size: 1.25em; width: 25%;">Delete Store</button>
+    </form>
+</div>
+
+<!-- Return to Store List Button -->
 <div class="text-center mt-4">
     <a href="@Url.Action("Index", "Store")" class="btn btn-primary">Return to Store List</a>
 </div>

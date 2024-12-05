@@ -4,6 +4,7 @@ using StoreSystem.Services.IService;
 
 namespace StoreSystem.Controllers
 {
+    [Route("[controller]")]
     public class ItemController : Controller
     {
         private readonly IItemService _itemService;

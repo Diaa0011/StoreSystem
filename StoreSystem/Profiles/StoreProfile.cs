@@ -9,6 +9,10 @@ namespace StoreSystem.Profiles
         public StoreProfile()
         {
             CreateMap<CreateStoreDto, Store>();
+            CreateMap<Store, StoreDetailsDto>();
+            CreateMap<DeleteStoreDto, Store>();
+            CreateMap<Store, UpdateStoreDto>();
+            CreateMap<UpdateStoreDto, Store>();
         }
 
     }

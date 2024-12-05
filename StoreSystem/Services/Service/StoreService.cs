@@ -18,13 +18,46 @@ namespace StoreSystem.Services.Service
             _mapper = mapper;
         }
 
-        public IEnumerable<Store> GetStores()
+        public IEnumerable<StoreDetailsDto> GetStores()
         {
-            return _storeRepo.GetAllStores();
+            var retrievedStores = _storeRepo.GetAllStores();
+
+            var stores = _mapper.Map<IEnumerable<StoreDetailsDto>>(retrievedStores);
+
+            return stores;
+        }
+        public StoreDetailsDto GetStoreDetails(int id)
+        {
+            var retrievedStore = _storeRepo.GetStore(id);
+
+            var store = _mapper.Map<StoreDetailsDto>(retrievedStore);
+
+            return store;
+
         }
         public void Add(CreateStoreDto createStore) {
+            
             var storeToAdd = _mapper.Map<Store>(createStore);
+        
             _storeRepo.Add(storeToAdd);
         }
+
+        public void Update(int id, UpdateStoreDto updateStore)
+        {
+            var storeToUpdate = _mapper.Map<Store>(updateStore);
+
+            storeToUpdate.Id = id;
+
+            _storeRepo.Update(storeToUpdate);
+        }
+
+        public void Delete(int id) {
+            var storeToDelete = _storeRepo.GetStore(id);
+
+            var store = _mapper.Map<Store>(storeToDelete);
+
+            _storeRepo.Delete(store);
+        }
+
     }
 }
