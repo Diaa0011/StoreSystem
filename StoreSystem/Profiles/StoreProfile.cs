@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using StoreSystem.Dtos.Store;
+using StoreSystem.Dtos.StoreItem;
 using StoreSystem.Models;
 
 namespace StoreSystem.Profiles
@@ -13,6 +14,7 @@ namespace StoreSystem.Profiles
             CreateMap<DeleteStoreDto, Store>();
             CreateMap<Store, UpdateStoreDto>();
             CreateMap<UpdateStoreDto, Store>();
+            
         }
 
     }

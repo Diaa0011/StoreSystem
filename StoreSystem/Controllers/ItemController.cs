@@ -11,6 +11,7 @@ namespace StoreSystem.Controllers
         public ItemController(IItemService itemService) { 
             _itemService = itemService;
         }
+        [HttpGet]
         public IActionResult Index()
         {
             var items = _itemService.GetAllItems();
@@ -24,10 +25,11 @@ namespace StoreSystem.Controllers
 
             return View(item);
         }
+        [HttpGet("Create")]
         public IActionResult Create() {
             return View();
         }
-        [HttpPost]
+        [HttpPost("Create")]
         public IActionResult Create(CreateItemDto createItem)
         {
             if (ModelState.IsValid)
@@ -37,6 +39,7 @@ namespace StoreSystem.Controllers
             }
             return BadRequest();
         }
+        [HttpGet("Update/{id}")]
         public IActionResult Update(int id)
         {
             var item = _itemService.GetItem(id); 

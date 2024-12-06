@@ -1,4 +1,5 @@
-﻿using StoreSystem.Models;
+﻿using StoreSystem.Dtos.StoreItem;
+using StoreSystem.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace StoreSystem.Dtos.Store
@@ -14,6 +15,6 @@ namespace StoreSystem.Dtos.Store
 
         [Range(-180, 180)]
         public double Longitude { get; set; }
-        public List<StoreItem> Items { get; set; }
+        public List<Models.StoreItem> Items { get; set; }
     }
 }

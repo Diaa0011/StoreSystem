@@ -29,6 +29,7 @@ namespace StoreSystem.Services.Service
         public StoreDetailsDto GetStoreDetails(int id)
         {
             var retrievedStore = _storeRepo.GetStore(id);
+            
 
             var store = _mapper.Map<StoreDetailsDto>(retrievedStore);
 

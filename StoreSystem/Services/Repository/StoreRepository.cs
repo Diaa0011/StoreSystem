@@ -22,8 +22,10 @@ namespace StoreSystem.Services.Repository
         }
         public Store GetStore(int id)
         {
-            var store = _db.stores.FirstOrDefault(q => q.Id == id);
-
+            var store = _db.stores
+                    .Include(s => s.Items)
+                    .ThenInclude(si => si.Item)// Include StoreItems with the Store
+                    .FirstOrDefault(s => s.Id == id);
             return store;
         }
         public void Add(Store store)

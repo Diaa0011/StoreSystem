@@ -3,6 +3,28 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to the Stock Management App</h1>
+</div>
+
+<hr />
+
+<!-- New Buttons Section -->
+<div class="text-center">
+    <h2>Actions</h2>
+    <div class="btn-group-vertical" role="group" aria-label="Vertical navigation buttons">
+        <!-- Button to view the list of stores -->
+        <a class="btn btn-primary mb-2" asp-controller="Store" asp-action="Index">
+            View List of Stores
+        </a>
+
+        <!-- Button to view the list of items -->
+        <a class="btn btn-secondary mb-2" asp-controller="Item" asp-action="Index">
+            View List of Items
+        </a>
+
+        <!-- Button to manage items (add/delete items to/from store) -->
+        <a class="btn btn-success" asp-controller="StoreItem" asp-action="Index">
+            Manage Items in Store
+        </a>
+    </div>
 </div>

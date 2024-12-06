@@ -1,0 +1,47 @@
+﻿@model StoreSystem.ViewModel.StoreItemViewModel
+
+@{
+    ViewData["Title"] = "Add or Delete Items from Store";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Manage Store Items</h2>
+
+    <form method="post" asp-action="Index" asp-controller="StoreItem">
+        <!-- Store Dropdown -->
+        <div class="mb-3">
+            <label for="storeDropdown" class="form-label">Select Store</label>
+            <select id="storeDropdown" name="StoreId" class="form-select" required>
+                <option value="">-- Select a Store --</option>
+                @foreach (var store in Model.Stores)
+                {
+                    <option value="@store.Id">@store.Name</option>
+                }
+            </select>
+        </div>
+
+        <!-- Item Dropdown -->
+        <div class="mb-3">
+            <label for="itemDropdown" class="form-label">Select Item</label>
+            <select id="itemDropdown" name="ItemId" class="form-select" required>
+                <option value="">-- Select an Item --</option>
+                @foreach (var item in Model.Items)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+
+        <!-- Quantity Input -->
+        <div class="mb-3">
+            <label for="quantityInput" class="form-label">Quantity</label>
+            <input type="number" id="quantityInput" name="Quantity" class="form-control" min="1" required />
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex justify-content-between">
+            <button type="submit" name="Action" value="Add" class="btn btn-success">Add</button>
+            <button type="submit" name="Action" value="Delete" class="btn btn-danger">Delete</button>
+        </div>
+    </form>
+</div>

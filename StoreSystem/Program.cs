@@ -17,6 +17,8 @@ builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 builder.Services.AddScoped<IStoreService, StoreService>();
 builder.Services.AddScoped<IItemRepsitory,ItemRepository>();
 builder.Services.AddScoped<IItemService, ItemService>();
+builder.Services.AddScoped<IStoreItemRepository, StoreItemRepository>();
+builder.Services.AddScoped<IStoreItemService, StoreItemService>();
 
 var app = builder.Build();
 

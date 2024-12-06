@@ -12,7 +12,7 @@ namespace StoreSystem.Data
 
         public DbSet<Item> items { get; set; }
         public DbSet<Store> stores { get; set; }
-        public DbSet<StoreItem> soreItem { get; set; }
+        public DbSet<StoreItem> storeItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
