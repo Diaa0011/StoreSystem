@@ -12,6 +12,7 @@ namespace StoreSystem.Profiles
             CreateMap<Item, ReadItemDto>();
             CreateMap<Item, UpdateItemDto>();
             CreateMap<UpdateItemDto, Item>();
+            CreateMap<ReadItemDto,UpdateItemDto>();
         }
     }
 }

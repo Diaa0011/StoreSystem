@@ -7,8 +7,8 @@ namespace StoreSystem.Services.IService
     {
         public IEnumerable<ReadItemDto> GetAllItems();
         public ReadItemDto GetItem(int id);
-        public void Add(CreateItemDto CreateItem);
-        public void Update(int id,UpdateItemDto updateItem);
+        public void Add(CreateItemDto CreateItem, IFormFile imageFile);
+        public void Update(int id, UpdateItemDto updateItem, IFormFile imageFile);
         public void Delete(int id);
     }
 }

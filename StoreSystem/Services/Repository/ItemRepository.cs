@@ -29,22 +29,24 @@ namespace StoreSystem.Services.Repository
         }
         public void Add(Item item)
         {
-            var sql = "INSERT INTO Items (Name, Description, Price) VALUES (@p0, @p1, @p2)";
+            var sql = "INSERT INTO Items (Name, Description, Price,ImagePath) VALUES (@p0, @p1, @p2, @p3)";
 
-            _db.Database.ExecuteSqlRaw(sql, item.Name,item.Description,item.Price);
+            _db.Database.ExecuteSqlRaw(sql, item.Name,item.Description,item.Price,item.ImagePath);
         }
         public void Update(Item item) {
             var sql = @"UPDATE Items
                       SET
                           Name = @Name,
                           Description = @Description,
-                          Price = @Price
+                          Price = @Price,
+                          ImagePath = @ImagePath
                       WHERE Id = @Id;";
             _db.Database.ExecuteSqlRaw(sql,
                     new SqlParameter("@Id", item.Id),
                     new SqlParameter("@Name", item.Name),
                     new SqlParameter("@Description", item.Description),
-                    new SqlParameter("@Price", item.Price));
+                    new SqlParameter("@Price", item.Price),
+                    new SqlParameter("@ImagePath",item.ImagePath));
         }
         public void Delete(int id)
         {

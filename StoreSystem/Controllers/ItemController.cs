@@ -30,11 +30,11 @@ namespace StoreSystem.Controllers
             return View();
         }
         [HttpPost("Create")]
-        public IActionResult Create(CreateItemDto createItem)
+        public IActionResult Create(CreateItemDto createItem, IFormFile imageFile)
         {
             if (ModelState.IsValid)
             {
-                _itemService.Add(createItem);
+                _itemService.Add(createItem, imageFile);
                 return RedirectToAction("Index");
             }
             return BadRequest();
@@ -46,8 +46,8 @@ namespace StoreSystem.Controllers
           
             return View(item); 
         }
-        [HttpPost]
-        public IActionResult Update(int id,UpdateItemDto updateItem)
+        [HttpPost("Update/{id}")]
+        public IActionResult Update(int id,UpdateItemDto updateItem, IFormFile imageFile)
         {
             if (!ModelState.IsValid)
             {
@@ -59,15 +59,16 @@ namespace StoreSystem.Controllers
             {
                 return NotFound();
             }
-            _itemService.Update(id, updateItem);
+            _itemService.Update(id, updateItem,imageFile);
             return RedirectToAction("Index");
         }
+        [HttpGet("Delete")]
         public IActionResult Delete(int id)
         {
             var item = _itemService.GetItem(id);
             return View(item);
         }
-        [HttpPost]
+        [HttpPost("Delete")]
         public IActionResult Delete(int id,deletedItemDto deleteItem)
         {
             _itemService.Delete(id);

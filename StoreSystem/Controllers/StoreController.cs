@@ -34,7 +34,7 @@ namespace StoreSystem.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost("Create")]
         public IActionResult Create(CreateStoreDto createStore)
         {
             if (ModelState.IsValid)
