@@ -11,8 +11,8 @@ using StoreSystem.Data;
 namespace StoreSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241207163101_ImageToItem")]
-    partial class ImageToItem
+    [Migration("20241207202808_newCleanMigration")]
+    partial class newCleanMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

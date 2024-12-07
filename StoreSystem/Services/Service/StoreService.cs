@@ -11,10 +11,12 @@ namespace StoreSystem.Services.Service
     public class StoreService: IStoreService
     {   
         private readonly IStoreRepository _storeRepo;
+        private readonly IStoreItemRepository _storeItemRepo;
         private readonly IMapper _mapper;
-        public StoreService(IStoreRepository storeRepo,IMapper mapper)
+        public StoreService(IStoreRepository storeRepo, IStoreItemRepository storeItemRepo, IMapper mapper)
         {
             _storeRepo = storeRepo;
+            _storeItemRepo = storeItemRepo;
             _mapper = mapper;
         }
 
@@ -56,6 +58,11 @@ namespace StoreSystem.Services.Service
             var storeToDelete = _storeRepo.GetStore(id);
 
             var store = _mapper.Map<Store>(storeToDelete);
+            var storeItemsList = store.Items.ToList();
+            foreach(var storeItem in storeItemsList)
+            {
+                _storeItemRepo.Delete(storeItem);
+            }
 
             _storeRepo.Delete(store);
         }

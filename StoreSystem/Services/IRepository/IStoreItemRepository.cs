@@ -7,6 +7,7 @@ namespace StoreSystem.Services.IRepository
         public IEnumerable<StoreItem> GetAll();
         public void Add(StoreItem storeItem);
         public void Update(StoreItem storeItem);
+        public void Delete(StoreItem storeItem);
 
     }
 }

@@ -25,5 +25,9 @@ namespace StoreSystem.Services.Repository
             _db.storeItems.Update(storeItem);
             _db.SaveChanges();
         }
+        public void Delete(StoreItem storeItem) {
+            _db.storeItems.Remove(storeItem);
+            _db.SaveChanges();
+        }
     }
 }
